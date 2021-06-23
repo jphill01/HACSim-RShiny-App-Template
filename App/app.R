@@ -33,7 +33,6 @@ ui <- fluidPage(
 
     # Application title
     titlePanel("HACSim: Haplotype Accumulation Curve Simulator"),
-        
         sidebarLayout(
             sidebarPanel(
                 numericInput(inputId = "perms",
@@ -51,7 +50,7 @@ ui <- fluidPage(
                              step = 0.01), 
         
                 numericInput(inputId = "conf.level",
-                             label = "Confidence level for calculations and plotting",
+                             label = "Confidence level for calculations and plotting (conf.level)",
                              value = 0.95,
                              min = 0.01,
                              max = 0.99,
@@ -81,7 +80,9 @@ ui <- fluidPage(
                                  
                                  textInput(inputId = "probs",
                                            label = "Haplotype frequency distribution",
-                                           value = "0.25, 0.25, 0.25, 0.25, 0.25")
+                                           value = "0.20, 0.20, 0.20, 0.20, 0.20"),
+                                 
+                              
                              
                          ), # end sidebarPanel
                          
@@ -92,16 +93,42 @@ ui <- fluidPage(
                     )
                
                     
-                ) # end sidebarLayout
+                ), # end sidebarLayout
+                
+                checkboxInput(inputId = "subsamplehaps", 
+                              label = "Subsample DNA haplotype labels",
+                              value = FALSE),
+                
+                conditionalPanel(condition = "input.subsamplehaps == 1",
+                                 numericInput(inputId = "prop",
+                                              label = "Proportion of DNA haplotype labels to subsample",
+                                              value = NULL,
+                                              min = 0,
+                                              max = 1,
+                                              step = 0.01)
+                ),
                 
             ), # end tabPanel
-
-                         
+                
+                br(),         
                 tabPanel("Real species", 
                          fileInput(inputId = "file", 
                                    label = "Choose FASTA file",
                                    accept = ".fas",
                                    buttonLabel = "Browse..."),
+                         
+                                   checkboxInput(inputId = "subsampleseqs", 
+                                                 label = "Subsample DNA sequences",
+                                                 value = FALSE),
+                                    
+                                   conditionalPanel(condition = "input.subsampleseqs == 1",
+                                                    numericInput(inputId = "prop",
+                                                                 label = "Proportion of DNA sequences to subsample",
+                                                                 value = NULL,
+                                                                 min = 0,
+                                                                 max = 1,
+                                                                 step = 0.01)
+                                                    ),
                          
                                    actionButton(inputId = "submit", 
                                                 label = "Submit")
@@ -109,9 +136,8 @@ ui <- fluidPage(
                 ) # end tabPanel
                
             ) # end tabsetPanel
-
-    
-    ) # end fluidPage
+        
+) # end fluidPage
 
 
 
