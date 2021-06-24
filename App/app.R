@@ -114,7 +114,7 @@ ui <- fluidPage(
                                               min = 0,
                                               max = 1,
                                               step = 0.01)
-                ),
+                ), # end conditionPanel
                 
             ), # end tabPanel
                 
@@ -137,7 +137,7 @@ ui <- fluidPage(
                                                                  max = 1,
                                                                  step = 0.01),
                                                     
-                                   ),
+                                   ), # end conditionPanel
                          
                                  helpText("Note: Inputted DNA sequences should not contain missing and/or ambiguous 
 	                                       nucleotides, which may lead to overestimation of the number of 
@@ -150,31 +150,36 @@ ui <- fluidPage(
         
             br(),
             tabPanel("About",
-                     p("HACSim (Haplotype Accumulation Curve Simulator) is a novel nonparametric stochastic 
-                                (Monte Carlo) local search optimization algorithm written in R for the simulation of haplotype 
-                                accumulation curves. It can be employed to determine likely required sample sizes for DNA 
-                                barcoding, specifically pertaining to recovery of total haplotype variation that may exist for 
-                                a given species."),
-                     
+                     h1("What is HACSim and how does it work?"),
+                     p("HACSim (",strong("H"),"aplotype",strong("A"),"ccumulation",strong("C"),"urve",strong("Sim"),"ulator) is 
+                        a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R for the 
+                        simulation of haplotype accumulation curves. It can be employed to determine likely required sample sizes 
+                        for DNA barcoding, specifically pertaining to recovery of total haplotype variation that may exist for 
+                        a given species."),
                      p("Most DNA barcoding studies conducted to date suggest sampling between 5-10 individuals per 
                         species due to research costs. However, it has been shown that low sample sizes can greatly 
                         underestimate haplotype diversity for geograpically-widespread taxa. The present algorithm 
                         is in place to more accurately determine sample sizes that are needed to uncover all putative 
                         haplotypes that may exist for a given species. Implications of such an approach include 
                         accelerating the construction and growth of DNA barcode reference libraries for species of 
-                        interest within the Barcode of Life Data Systems (BOLD) (http://v4.boldsystems.org/) 
-                        or similar database such as GenBank (https://www.ncbi.nlm.nih.gov/genbank/)."),
-                                
-                        p("Within the simulation algorithm, species haplotypes are treated as distinct character labels 
-                          (1, 2, ...), where 1 denotes the most frequent haplotype, 2 denotes the second-most frequent 
-                          haplotype, and so forth. The algorithm then randomly samples species haplotype labels in an 
-                          iterative fashion, until all unique haplotypes have been observed. The idea is that levels of 
-                          species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
-                          total haplotype diversity that may exist for a given species."),
-                                
-                        p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
-                          (e.g., cytb).")
-                     
+                        interest within the Barcode of Life Data Systems", (tags$a(href = "http://www.boldsystems.org", "(BOLD)")), 
+                        "or similar database such as", (tags$a(href = "https://www.ncbi.nlm.nih.gov/genbank/", "GenBank."))),
+                    p("Within the simulation algorithm, species haplotypes are treated as distinct character labels 
+                        (1, 2, ...), where 1 denotes the most frequent haplotype, 2 denotes the second-most frequent 
+                        haplotype, and so forth. The algorithm then randomly samples species haplotype labels in an 
+                        iterative fashion, until all unique haplotypes have been observed. The idea is that levels of 
+                        species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
+                        total haplotype diversity that may exist for a given species."),
+                    p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
+                        (",em("e.g."), "cytb)."),
+                    h3("Authors"),
+                    h3("More Information"), 
+                    p("Are you interested in doing even more with HACSim? Consider downloading the R package! See", 
+                    (tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "HACSim")), "for more details.)"),
+                    h3("Citation"),
+                    p(strong("Phillips, J.D."), "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                    R package to estimate intraspecific sample sizes for genetic diversity assessment 
+                    using haplotype accumulation curves. PeerJ Computer Science, 6(192): 1-37.")
             ) # end tanPanel
                      
                
