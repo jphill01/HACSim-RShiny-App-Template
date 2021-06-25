@@ -87,7 +87,7 @@ ui <- fluidPage(
                                          min = 1),
                                  
                             textInput(inputId = "probs",
-                                      label = "Haplotype frequency distribution",
+                                      label = "Haplotype frequency distribution (probs)",
                                       value = "0.20, 0.20, 0.20, 0.20, 0.20"),
                                  
                               
