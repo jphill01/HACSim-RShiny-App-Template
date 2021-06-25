@@ -34,7 +34,7 @@ ui <- fluidPage(
     # Application title
     titlePanel("HACSim: Haplotype Accumulation Curve Simulator"),
     tabsetPanel(
-        tabPanel("Main algorithm parameters",
+        tabPanel("Main interface",
             sidebarLayout(
                 sidebarPanel(
                     numericInput(inputId = "perms",
@@ -149,13 +149,12 @@ ui <- fluidPage(
                 ), # end tabPanel
         
             br(),
-            tabPanel("About",
-                     h1("What is HACSim and how does it work?"),
-                     p("HACSim (",strong("H"),"aplotype",strong("A"),"ccumulation",strong("C"),"urve",strong("Sim"),"ulator) is 
-                        a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R for the 
-                        simulation of haplotype accumulation curves. It can be employed to determine likely required sample sizes 
-                        for DNA barcoding, specifically pertaining to recovery of total haplotype variation that may exist for 
-                        a given species."),
+            tabPanel("About", 
+                     h3("What is HACSim and how does it work?"),
+                     p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
+                        for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
+                        sample sizes for DNA barcoding, specifically pertaining to recovery of total haplotype variation that may 
+                        exist for a given species."),
                      p("Most DNA barcoding studies conducted to date suggest sampling between 5-10 individuals per 
                         species due to research costs. However, it has been shown that low sample sizes can greatly 
                         underestimate haplotype diversity for geograpically-widespread taxa. The present algorithm 
@@ -171,16 +170,22 @@ ui <- fluidPage(
                         species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
                         total haplotype diversity that may exist for a given species."),
                     p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
-                        (",em("e.g."), "cytb)."),
+                        (",em("e.g.,"),"cytb)."),
                     h3("Authors"),
+                    tags$ul(
+                        tags$li("Jarrett D. Phillips (phillipsjarrett1@gmail.com)"),
+                        tags$li("Navdeep Singh")
+                    ),
                     h3("More Information"), 
-                    p("Are you interested in doing even more with HACSim? Consider downloading the R package! See", 
-                    (tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "HACSim")), "for more details.)"),
+                    p("Are you interested in doing even more with HACSim? Consider downloading the R package! See the HACSim", 
+                      tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN"),
+                      "page for more details. You can also check out the HACSim R package repository on", 
+                      tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.")),
                     h3("Citation"),
-                    p(strong("Phillips, J.D."), "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                    p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
-                    using haplotype accumulation curves. PeerJ Computer Science, 6(192): 1-37.")
-            ) # end tanPanel
+                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
+            ) # end tabPanel
                      
                
             ), # end tabsetPanel
@@ -198,7 +203,6 @@ ui <- fluidPage(
 # Define server logic
 server <- function(input, output) {
 
-    output$distPlot <- renderPlot({ })
 }
 
 # Run the application 
