@@ -74,7 +74,7 @@ ui <- fluidPage(
         ), # end tabPanel
 
                 tabPanel("Hypothetical species",
-                         br(),
+                    br(),
                     sidebarLayout(
                         sidebarPanel(
                             numericInput(inputId = "N",
