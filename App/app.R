@@ -21,8 +21,8 @@ remove(list = ls())
 
 library(shiny)
 
-devtools::install_github("rstudio/shiny-incubator", force = TRUE)
-library(shinyIncubator)
+# devtools::install_github("rstudio/shiny-incubator", force = TRUE)
+# library(shinyIncubator)
 
 # library(HACSim)
 
@@ -30,11 +30,12 @@ library(shinyIncubator)
 
 # Define UI for application
 ui <- fluidPage(
-
+    
     # Application title
     titlePanel("HACSim: Haplotype Accumulation Curve Simulator"),
     tabsetPanel(
         tabPanel("Main interface",
+            br(),
             sidebarLayout(
                 sidebarPanel(
                     numericInput(inputId = "perms",
@@ -72,8 +73,8 @@ ui <- fluidPage(
             
         ), # end tabPanel
 
-            br(),
-                tabPanel("Hypothetical species", 
+                tabPanel("Hypothetical species",
+                         br(),
                     sidebarLayout(
                         sidebarPanel(
                             numericInput(inputId = "N",
@@ -118,8 +119,9 @@ ui <- fluidPage(
                 
             ), # end tabPanel
                 
-                br(),         
-                tabPanel("Real species", 
+                    
+                tabPanel("Real species",
+                         br(),
                          fileInput(inputId = "file", 
                                    label = "Choose FASTA file",
                                    accept = ".fas",
@@ -148,8 +150,7 @@ ui <- fluidPage(
                          
                 ), # end tabPanel
         
-            br(),
-            tabPanel("About", 
+            tabPanel("About",
                      h3("What is HACSim and how does it work?"),
                      p("HACSim is a novel nonparametric stochastic (Monte Carlo) local search optimization algorithm written in R 
                         for the simulation of haplotype accumulation curves. It can be employed to determine likely required 
@@ -170,7 +171,7 @@ ui <- fluidPage(
                         species haplotypic variation that are currently catalogued in BOLD can serve as proxies for 
                         total haplotype diversity that may exist for a given species."),
                     p("Molecular loci besides DNA barcode genes (5'-COI, rbcL/matK, ITS regions) can be used with HACSim 
-                        (",em("e.g.,"),"cytb)."),
+                        (",em("e.g.,", .noWS = c('before')),"cytb)."),
                     h3("Authors"),
                     tags$ul(
                         tags$li("Jarrett D. Phillips (phillipsjarrett1@gmail.com)"),
@@ -182,7 +183,7 @@ ui <- fluidPage(
                       "page for more details. You can also check out the HACSim R package repository on", 
                       tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.")),
                     h3("Citation"),
-                    p(strong("Phillips, J.D.",),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
+                    p(strong("Phillips, J.D.", .noWS = c('outside')),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
                     using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
             ) # end tabPanel
