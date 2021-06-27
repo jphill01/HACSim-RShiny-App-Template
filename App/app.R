@@ -182,10 +182,19 @@ ui <- fluidPage(
                       tags$a(href = "https://cran.r-project.org/web/packages/HACSim/index.html", "CRAN"),
                       "page for more details. You can also check out the HACSim R package repository on", 
                       tags$a(href = "https://github.com/jphill01/HACSim.R", "GitHub.")),
-                    h3("Citation"),
+                    h3("Citations"),
+                    p("In utilizing HACSim, the following publications may be of interest and worth citing"),
                     p(strong("Phillips, J.D.", .noWS = c('outside')),",", "French, S.H., Hanner, R.H. and  Gillis, D.J. (2020). HACSim: An 
                     R package to estimate intraspecific sample sizes for genetic diversity assessment 
-                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6"),"(192): 1-37.")
+                    using haplotype accumulation curves.",em("PeerJ Computer Science,"), strong("6", noWS = c('outside')),"(192): 1-37. 
+                    DOI: 10.7717/peerj-cs.243."),
+                    p(strong("Phillips, J.D.", .noWS = c('outside')),",", "Gillis, D.J. and Hanner, R.H. (2019). Incomplete estimates of 
+                      genetic diversity within species: Implications for DNA barcoding.", em("Ecology and Evolution,"), 
+                      strong("9", noWS = c('outside')),"(5): 2996-3010. DOI: 10.1002/ece3.4757."),
+                    p(strong("Phillips, J.D.", .noWS = c('outside')),",", "Gwiazdowski, R.A., Ashlock, D. and Hanner, R. (2015). An exploration of sufficient sampling effort 
+                      to describe intraspecific DNA barcode haplotype diversity: examples from the ray-finned fishes (Chordata: 
+                      Actinopterygii).", em("DNA Barcodes,"), strong("3", noWS = c('outside')),": 66-73. DOI: 10.1515/dna-2015-0008.")
+                   
             ) # end tabPanel
                      
                
